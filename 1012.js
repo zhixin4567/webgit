@@ -71,12 +71,12 @@
     //  sub = new subClass();
     //  console.log(sub.getSuperValue());
 
-    function superClass() {
-        this.book = ["html", "js", "css"];
-    };
+    // function superClass() {
+    //     this.book = ["html", "js", "css"];
+    // };
 
-    function subClass() {};
-    subClass.prototype = new superClass();
+    // function subClass() {};
+    // subClass.prototype = new superClass();
     // var ins2 = new superClass();
     // var ins1 = new subClass();
     // console.log(ins1.book);
@@ -84,10 +84,103 @@
     // console.log(ins1.book);
     // console.log(ins2.book);
 
-    superClass.prototype.getBook = function(){
-    	return this.book;
-    }
-    var sup = new superClass();
-     sup.book.push("hihi");
-    console.log(sup.getBook());
+    // superClass.prototype.getBook = function(){
+    // 	return this.book;
+    // }
+    // var sup = new superClass();
+    //  sup.book.push("hihi");
+    // console.log(sup.getBook());
+    // function text() {
+    //     console.log(arguments);
+    //         	this.tee = function(){
+    //         	if (arguments.length == 1) {
+    //         		text1(arguments[0]);
+    //         	}else if (arguments.length == 2) {
+    //         		text2(arguments[0],arguments[1]);
+    //         	}else if (arguments.length == 3) {
+    //         		text3(arguments[0],arguments[1],arguments[2]);
+    //         	};
+    //     }
+    //         	function text1(a){
+    //         		console.log('text1:'+ a);
+
+    //         	};
+
+    //         	function text2(a,b){
+    //         		console.log('text2:'+a+b);
+    //         	};
+
+    //         	function text3(a,b,c){
+    //         		console.log('text3:'+a+b+c)
+    //         	};
+   
+      
+    // }
+
+  //   function master(name){
+  //   	this.name = name;
+  //   };
+  //    master.prototype.feed = function(animal,food){
+  //    	console.log(this.name +"给"+animal.name +"喂"+food.name);
+  //    };
+
+  //    function Food(name){
+  //    	this.name =name;
+  //    };
+  //    function Fish(){
+  //    	this.f = Food;
+  //    	this.f(name);
+  //    };
+  //    function bone(name){
+  //    	this.e = Food;
+  //    	this.e(name);
+  //    };
+  //    function Animal(name){
+  //    	this.name = name;
+  //    };
+
+
+  //    function cat(name){
+  //    	this.animal = Animal;
+  //    	this.animal(name);
+  //    };
+  //    function dog(name){
+		// this.d = Animal;
+  //    	this.d(name);
+  //    }
+
+     // var person = new master("lili");
+     // var cat = new cat("hihi");
+     // var food = new Food("fish");
+     // person.feed(cat,food);
+
+     // console.log(cat.name);
+     // var dog = new dog("lili");
+     // var bone = new bone("gutou")
+     // console.log(dog.name + bone.name);
+
+     // var person = new master("laoli");
+     // var dog = new dog("hihi");
+     // var food = new Food("gutou");
+     // person.feed(dog,food);
+
+// foo();// TypeError
+// bar(); // ReferenceError
+
+// var foo = function bar() {
+//     // ...
+// };
+//  foo();
+ //函数声明和变量声明都会被提升 函数<变量
+
+
+
+if (a) {
+   function foo() { console.log( "a" ); }
+}
+else {
+   function foo() { console.log( "b" ); }
+}
+foo(); // "b"
+var a = true;
 }())
