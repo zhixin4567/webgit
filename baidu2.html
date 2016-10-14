@@ -1,0 +1,132 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>仿百度新闻导航</title>
+    
+</head>
+<style>
+body {
+    font-size: 12px;
+}
+
+ul,
+li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.b_nav_wrap {
+    width: 100%;
+    background: #01204f;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+}
+
+.b_nav {
+    width: 1000px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+    font-family: arial, 'Hiragino Sans GB', 'Microsoft Yahei', 微软雅黑, 宋体, Tahoma, Arial, Helvetica, STHeiti;
+    position: relative;
+    margin: 0 auto;
+}
+
+.b_nav_li {
+    display: inline-block;
+    height: 100%;
+    padding: 0 10px;
+    cursor: pointer;
+    position: relative;
+}
+
+.b_nav_li_active {
+    background: #cc0000;
+}
+
+.ani_red {
+    position: absolute;
+    left: 0;
+    background: #cc0000;
+    height: 40px;
+    padding: 0;
+    transition: left 0.3s, width 0.3s;
+    transition-timing-function: ease-in-out;
+    display: none;
+}
+
+.about {
+    margin-top: 50px;
+}
+</style>
+
+<body>
+    <div class="b_nav_wrap">
+        <ul class="b_nav" id="b_nav1">
+            <div class="ani_red" id="ani_red1"></div>
+            <li class="b_nav_li" id="b_nav_lis">首页</li>
+            <li class="b_nav_li" id="b_nav_li1">百家</li>
+            <li class="b_nav_li">财经</li>
+            <li class="b_nav_li">娱乐</li>
+            <li class="b_nav_li">体育</li>
+            <li class="b_nav_li">互联网</li>
+            <li class="b_nav_li">时尚</li>
+            <li class="b_nav_li">汽车</li>
+            <li class="b_nav_li">国内</li>
+            <li class="b_nav_li">国际</li>
+            <li class="b_nav_li">军事</li>
+            <li class="b_nav_li">社会</li>
+            <li class="b_nav_li">传媒</li>
+            <li class="b_nav_li">视频</li>
+            <li class="b_nav_li">个性推荐</li>
+            <li class="b_nav_li">房产</li>
+            <li class="b_nav_li">名站</li>
+            <li class="b_nav_li">更多</li>
+        </ul>
+    </div>
+    <div class="about">百度新闻：<a href="http://news.baidu.com/" target="_blank">http://news.baidu.com/</a></div>
+    <script>
+    var ani_red = document.getElementsByClassName('ani_red')[0];
+    var b_nav_li = document.getElementsByTagName('li');
+    b_nav_li[0].classList.add("b_nav_li_active");
+    ani_red.style.display = 'block';
+
+
+    for (var i = 0; i < b_nav_li.length; i++) {
+        function list(i) {
+
+            b_nav_li[i].onmouseover = function() {
+                for (var j = 0; j < b_nav_li.length; j++) {
+                    window.clearInterval(b_nav_li[j].timer)
+                }
+                ani_red.style.width = this.offsetWidth + 'px';
+                b_nav_li[i].timer = window.setInterval(function() {
+                    var zj = parseInt(b_nav_li[i].offsetLeft);
+                    var sd = parseInt((zj - ani_red.offsetLeft) / 0.5);
+                    ani_red.style.left = ani_red.offsetLeft + sd + 'px';
+                }, 30)
+            }
+        }
+        list(i)
+
+        b_nav_li[i].onclick = function() {
+            for (var j = 0; j < b_nav_li.length; j++) {
+                b_nav_li[j].classList.remove("b_nav_li_active");
+            }
+            this.classList.add("b_nav_li_active");
+        }
+    }
+    var bigDiv = document.getElementsByClassName('b_nav_wrap')[0];
+
+    bigDiv.onmouseout = function() {
+        for (var j = 0; j < b_nav_li.length; j++) {
+            window.clearInterval(b_nav_li[j].timer)
+        }
+    }
+    </script>
+</body>
+
+</html>
